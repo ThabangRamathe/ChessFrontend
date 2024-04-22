@@ -1,0 +1,18 @@
+
+<table>
+    <tr *ngFor="let row of [].constructor(8); let rank = index">
+        <td *ngFor="let col of [].constructor(8); let file = index" [ngClass]="getSquareColor(rank, file)" (click)="handleSquareClick(rank, file)">
+            <div *ngIf="hasPiece(rank, file)">
+                <img [src]="getImgSrc(rank, file)">
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div *ngIf="state == 1"><span>Checkmate! Black wins</span></div>
+<div *ngIf="state == 2"><span>Checkmate! White wins</span></div>
+<div *ngIf="state == 0"><span>Stalemate!</span></div>
+
+<div>
+    <button (click)="undoMove()">Undo</button>
+</div>
